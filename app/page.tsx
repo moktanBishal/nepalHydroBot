@@ -1,14 +1,12 @@
 import Link from 'next/link'
-import projectsData from '@/data/projects.json'
+import projectsData from '../../data/projects.json'
 
 const projects = projectsData.projects
-
-: any
 
 export default function Home() {
   return (
     <div>
-      <header className="bg-primary text-white py-10">
+      <header className="bg-primary text-white py-12">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold">Nepal Hydro Timeline</h1>
           <p className="mt-3 text-lg opacity-90">Explore timelines of major hydropower projects</p>
@@ -21,10 +19,10 @@ export default function Home() {
             type="text"
             placeholder="Search a project or ask a question..."
             className="flex-1 px-5 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-            onKeyDown={(e) => e.key === 'Enter' && (window.location.href = `/chat?q=${e.currentTarget.value}`)}
+            onKeyDown={(e) => e.key === 'Enter' && (window.location.href = `/chat?q=${encodeURIComponent(e.currentTarget.value)}`)}
           />
           <Link href="/chat" className="bg-primary text-white px-8 py-3 rounded-lg hover:bg-blue-600 text-center">
-            AI Chat (Nepali/English)
+            AI Chat (English/Nepali)
           </Link>
         </div>
 
