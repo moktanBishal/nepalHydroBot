@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server'
-import projectsData from '../../../data/projects.json'
+import projectsData from '../../data/projects.json'
 
 const API_KEY = process.env.GROQ_API_KEY
 
