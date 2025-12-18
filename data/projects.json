@@ -1,0 +1,50 @@
+{
+  "projects": [
+    {
+      "id": "upper-tamakoshi",
+      "name": "Upper Tamakoshi",
+      "river": "Tamakoshi",
+      "capacity_mw": 456,
+      "developer": "Upper Tamakoshi Hydropower Ltd (NEA)",
+      "type": "Peaking RoR",
+      "status": "Operational",
+      "notes": "Nepal's largest. Restored full power June 2025 after 2024 floods.",
+      "milestones": [
+        { "phase": "Construction Start", "date": "2011", "exact": true },
+        { "phase": "Full Operation", "date": "2021-09", "exact": true },
+        { "phase": "Flood Damage", "date": "2024-09", "exact": true },
+        { "phase": "Full Restoration", "date": "2025-06", "exact": true }
+      ]
+    },
+    {
+      "id": "arun-3",
+      "name": "Arun-3",
+      "river": "Arun",
+      "capacity_mw": 900,
+      "developer": "SJVN Arun-3 (India)",
+      "type": "Run-of-River",
+      "status": "Under Construction",
+      "notes": "Export to India. Over 70% complete. First power expected 2026.",
+      "milestones": [
+        { "phase": "Construction Start", "date": "2018-05", "exact": true },
+        { "phase": "HRT Breakthrough", "date": "2024-06", "exact": true },
+        { "phase": "First Power", "date": "2026", "exact": false }
+      ]
+    },
+    {
+      "id": "budhigandaki",
+      "name": "Budhigandaki",
+      "river": "Budhi Gandaki",
+      "capacity_mw": 1200,
+      "developer": "Domestic funding (NEA-led)",
+      "type": "Storage",
+      "status": "Pre-Construction",
+      "notes": "Domestic model approved Nov 2025. Main works likely 2027+.",
+      "milestones": [
+        { "phase": "Funding Approved", "date": "2025-11", "exact": true },
+        { "phase": "Main Works Start", "date": "2027", "exact": false },
+        { "phase": "Expected COD", "date": "2035", "exact": false }
+      ]
+    }
+  ]
+}
