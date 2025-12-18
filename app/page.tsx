@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import projectsData from '../../data/projects.json'
+import projectsData from '../data/projects.json'
 
 const projects = projectsData.projects
 
