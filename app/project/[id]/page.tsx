@@ -1,8 +1,10 @@
+'use client'
+
 import { notFound } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 import { Timeline } from 'vis-timeline/standalone'
 import 'vis-timeline/styles/vis-timeline-graph2d.min.css'
-import projectsData from '@/data/projects.json'
+import projectsData from '../../../data/projects.json'
 
 const projects = projectsData.projects
 
@@ -16,19 +18,24 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
     if (!timelineRef.current) return
 
     const items = project.milestones.map((m: any, i: number) => ({
-      id: i,
+      id: i + 1,
       content: m.phase,
-      start: m.date.length === 4 ? `${m.date}-01-01` : m.date.replace(/^\d{4}$/, '$&-01-01'),
+      start: m.date.includes('-') ? m.date : `${m.date}-01-01`,
       type: m.exact ? 'box' : 'point',
-      className: m.exact ? 'bg-green-500 text-white' : 'bg-gray-400'
+      className: m.exact ? 'exact' : 'estimate'
     }))
 
-    new Timeline(timelineRef.current, items, {
-      height: '280px',
-      min: '2000-01-01',
-      max: '2035-01-01',
-      zoomKey: 'ctrlKey',
-    })
+    const options = {
+      height: '300px',
+      start: '2005-01-01',
+      end: '2035-01-01',
+      zoomable: true,
+      format: {
+        minorLabels: { year: 'YYYY' }
+      }
+    }
+
+    new Timeline(timelineRef.current, items, options)
   }, [project])
 
   return (
@@ -57,11 +64,11 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
       <div className="bg-white p-6 rounded-lg shadow mb-8">
         <h2 className="text-2xl font-bold mb-4">Timeline</h2>
         <div ref={timelineRef} className="border rounded" />
-        <p className="text-sm text-gray-500 mt-3">Green = Confirmed | Gray = Estimated</p>
+        <p className="text-sm text-gray-500 mt-3">Box = Confirmed | Dot = Estimated</p>
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow">
-        <h2 className="text-2xl font-bold mb-4">Notes</h2>
+        <h2 className="text-2xl font-bold mb-4">Project Notes</h2>
         <p className="text-lg leading-relaxed">{project.notes}</p>
       </div>
     </div>
